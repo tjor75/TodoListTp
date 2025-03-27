@@ -1,0 +1,109 @@
+@font-face {
+    font-family: "Roboto Mono";
+    src: url("fonts/RobotoMono/RobotoMono-VariableFont_wght.ttf");
+}
+
+* {
+    border-radius: 5px;
+}
+body, button, input {
+    font-family: "Roboto Mono", sans-serif;
+    font-weight: bold;
+}
+body {
+    min-height: 100vh;
+    margin: 0;
+    
+    background-image: url("img/istockphoto-1460853312-612x612.jpg");
+    background-size: cover;
+    background-position: center;
+}
+input {
+    border: solid 1px #0000ff;
+    outline: none;
+}
+main, input:focus {
+    box-shadow: 5px 5px 5px 1px rgba(0, 0, 255, 0.2);
+}
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 8px;
+    min-height: 100vh;
+}
+p {
+    margin: 3px 0;
+    height: 0;
+    overflow-y: hidden;
+    animation: 2s;
+}
+div:has(> input) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.columnas {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+#cambiarTema {
+    font-size: 16px;
+    position: fixed;
+    padding: 5px;
+    top: 5px;
+    right: 5px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    border: solid 1px #eaeaea;
+}
+
+
+/* Light theme */
+[theme=light] main, [theme=light] input {
+    background: #eaeaea;
+    color: #151515;
+}
+[theme=light] #cambiarTema {
+    background: #151515;
+}
+
+/* Dark theme */
+[theme=dark] main, [theme=dark] input {
+    background: #151515;
+    color: #eaeaea;
+}
+[theme=dark] #cambiarTema {
+    background: #eaeaea;
+}
+
+
+input[type=submit] {
+    background: #0000ff;
+    color: #fff;
+}
+[valid="0"] {
+    border-color: #d30000;
+}
+[valid="0"] + p {
+    color: #d30000;
+    height: fit-content;
+}
+[valid="1"] {
+    border-color: #6dc500;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .columnas {
+        flex-direction: column;
+    }
+}

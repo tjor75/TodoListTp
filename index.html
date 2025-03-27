@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body theme="light">
+    <button id="cambiarTema">&#x1F31A;</button>
+    <main>
+
+    <div>
+        <form id="nuevaTareaForm">
+            <input id="nuevaTareaInput" type="text" placeholder="Nueva tarea">
+            <button onclick="agregarTarea();">+</button>
+        </form>
+        <button onclick="vaciar();">Vaciar☢️</button>
+    </div>
+
+    <ul id="listaDeTareas"></ul>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
