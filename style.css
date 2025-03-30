@@ -18,6 +18,9 @@ body {
     background-size: cover;
     background-position: center;
 }
+button, input, ul {
+    padding: 5px 10px;
+}
 button {
     background: #0000ff;
     color: #fff;
@@ -25,20 +28,30 @@ button {
     padding: 5px 10px;
     cursor: pointer;
 }
-input {
-    border: solid 1px #0000ff;
-    outline: none;
+button:hover, input:focus {
+    box-shadow: 5px 5px 5px 1px rgba(0, 0, 255, 0.2);
+}
+button:active {
+    box-shadow: none;
 }
 form {
     display: flex;
 }
-form input {
+input {
     flex: 1;
     margin-right: 5px;
+    border: solid 1px #0000ff;
+    outline: none;
 }
-main, input:focus {
-    box-shadow: 5px 5px 5px 1px rgba(0, 0, 255, 0.2);
+div:has(> input) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
+p {
+    margin: 0;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -47,14 +60,6 @@ main {
     padding: 8px;
     min-height: 100vh;
     border-radius: 0;
-}
-p {
-    margin: 0;
-}
-div:has(> input) {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
 }
 
 div:has(> ul) {
@@ -74,6 +79,9 @@ div:has(> ul)::before {
 div:has(> ul) li {
     display: flex;
     gap: 3px;
+}
+div:has(> ul) li::before {
+    content: "[ ]";
 }
 
 div:has(> ul) > p {

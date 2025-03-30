@@ -29,7 +29,7 @@ function guardarBackup() {
 
 function agregarTareaLi(tarea) {
     const li = document.createElement("li");
-    li.innerHTML = `${tarea.nombre}`;
+    li.innerHTML = `<p>${tarea.nombre}</p>`;
     li.setAttribute("tid", tarea.tid);
     tareasUl.appendChild(li);
 }
