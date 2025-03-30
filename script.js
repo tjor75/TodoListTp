@@ -1,27 +1,34 @@
 const nuevaTareaForm = document.getElementById("nuevaTareaForm");
 const nuevaTareaInput = document.getElementById("nuevaTareaInput");
+const tareasUl = document.getElementById("tareasUl");
 const tareas = [];
-const listaDeTareas = document.getElementById("listaDeTareas");
+let ultimoTid;
 
-function enviarNuevaTarea() {
-    
-}
-function agregarTareaLista(tarea) {
+function agregarTareaLi(tarea) {
     const nuevoElemento = document.createElement("li");
     nuevoElemento.innerHTML = `${tarea.nombre}`;
-    listaDeTareas.appendChild(nuevoElemento);
+    nuevoElemento.setAttribute("tid", tarea.tid);
+    tareasUl.appendChild(nuevoElemento);
 }
-function agregarTarea() {
-    const tarea = {
-        fechaCreacion: new Date(),
-        fechaCompletado: null,
-        nombre: nuevaTareaInput.value
-    };
+function vaciarTareasUl() {
+    tareasUl.innerHTML = "";
+}
 
+function agregarTarea() {
+    let tarea;
 
     if (nuevaTareaInput.value !== "") {
-        agregarTareaLista(tarea);
-    
+        ultimoTid++;
+
+        tarea = {
+            tid: ultimoTid,
+            fechaCreacion: new Date(),
+            fechaCompletado: null,
+            nombre: nuevaTareaInput.value
+        };
+
+        tareas.push(tarea);
+        agregarTareaLi(tarea);
         nuevaTareaInput.value = "";
     }
 }
