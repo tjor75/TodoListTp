@@ -1,7 +1,7 @@
 const nuevaTareaForm = document.getElementById("nuevaTareaForm");
 const nuevaTareaInput = document.getElementById("nuevaTareaInput");
 const tareasUl = document.getElementById("tareasUl");
-const tareas = [];
+let tareas = [];
 let ultimoTid;
 
 function agregarTareaLi(tarea) {
@@ -9,9 +9,6 @@ function agregarTareaLi(tarea) {
     nuevoElemento.innerHTML = `${tarea.nombre}`;
     nuevoElemento.setAttribute("tid", tarea.tid);
     tareasUl.appendChild(nuevoElemento);
-}
-function vaciarTareasUl() {
-    tareasUl.innerHTML = "";
 }
 
 function agregarTarea() {
@@ -42,7 +39,8 @@ function eliminarTarea(pos) {
 }
 
 function vaciar() {
-    
+    tareas = [];
+    tareasUl.innerHTML = "";
 }
 
 nuevaTareaForm.addEventListener("submit", evento => {
