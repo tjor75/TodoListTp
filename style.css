@@ -18,9 +18,23 @@ body {
     background-size: cover;
     background-position: center;
 }
+button {
+    background: #0000ff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
 input {
     border: solid 1px #0000ff;
     outline: none;
+}
+form {
+    display: flex;
+}
+form input {
+    flex: 1;
+    margin-right: 5px;
 }
 main, input:focus {
     box-shadow: 5px 5px 5px 1px rgba(0, 0, 255, 0.2);
@@ -28,22 +42,45 @@ main, input:focus {
 main {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
     width: 80%;
     margin: 0 auto;
     padding: 8px;
     min-height: 100vh;
+    border-radius: 0;
 }
 p {
     margin: 3px 0;
-    height: 0;
-    overflow-y: hidden;
-    animation: 2s;
 }
 div:has(> input) {
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+div:has(> ul) {
+    position: relative;
+    flex: 1;
+    background: #fcfcfc;
+}
+div:has(> ul)::before {
+    content: "↑↑↑↑↑";
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #7a7a7a;
+}
+div:has(> ul) p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+}
+div:has(> ul > li)::before, div:has(> ul > li) p {
+    display: none;
 }
 
 .columnas {
