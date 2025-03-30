@@ -94,10 +94,8 @@ div:has(> ul > li)::before, div:has(> ul > li) > p {
 
 #cambiarTema {
     font-size: 16px;
-    position: fixed;
+    float: right;
     padding: 5px;
-    top: 5px;
-    right: 5px;
     width: 32px;
     height: 32px;
     border: none;
