@@ -43,14 +43,13 @@ main {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    width: 80%;
-    margin: 0 auto;
+    margin: 0 10%;
     padding: 8px;
     min-height: 100vh;
     border-radius: 0;
 }
 p {
-    margin: 3px 0;
+    margin: 0;
 }
 div:has(> input) {
     display: flex;
@@ -72,20 +71,24 @@ div:has(> ul)::before {
     transform: translateX(-50%);
     color: #7a7a7a;
 }
-div:has(> ul) p {
+div:has(> ul) li {
+    display: flex;
+    gap: 3px;
+}
+
+div:has(> ul) > p {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%);
     text-align: center;
 }
-div:has(> ul > li)::before, div:has(> ul > li) p {
+div:has(> ul > li)::before, div:has(> ul > li) > p {
     display: none;
 }
 
 .columnas {
     display: flex;
-    flex-direction: row;
     gap: 5px;
 }
 
@@ -127,20 +130,10 @@ input[type=submit] {
     background: #0000ff;
     color: #fff;
 }
-[valid="0"] {
-    border-color: #d30000;
-}
-[valid="0"] + p {
-    color: #d30000;
-    height: fit-content;
-}
-[valid="1"] {
-    border-color: #6dc500;
-}
 
 
 @media only screen and (max-width: 600px) {
-    .columnas {
-        flex-direction: column;
+    main {
+        margin: 0;
     }
 }

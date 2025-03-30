@@ -28,10 +28,14 @@ function guardarBackup() {
 
 
 function agregarTareaLi(tarea) {
-    const nuevoElemento = document.createElement("li");
-    nuevoElemento.innerHTML = `${tarea.nombre}`;
-    nuevoElemento.setAttribute("tid", tarea.tid);
-    tareasUl.appendChild(nuevoElemento);
+    const li = document.createElement("li");
+    li.innerHTML = `${tarea.nombre}`;
+    li.setAttribute("tid", tarea.tid);
+    tareasUl.appendChild(li);
+}
+function agregarTodasTareasLi() {
+    for (const tarea of tareas)
+        agregarTareaLi(tarea);
 }
 
 function agregarTarea() {
@@ -54,14 +58,6 @@ function agregarTarea() {
     }
 }
 
-function listarTareas() {
-    
-}
-
-function eliminarTarea(pos) {
-    
-}
-
 function vaciar() {
     tareas = [];
     tareasUl.innerHTML = "";
@@ -70,6 +66,8 @@ function vaciar() {
 
 
 cargarBackup();
+agregarTodasTareasLi();
+
 
 nuevaTareaForm.addEventListener("submit", evento => {
     evento.preventDefault();
