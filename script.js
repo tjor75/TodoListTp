@@ -29,8 +29,10 @@ function guardarBackup() {
 
 function agregarTareaLi(tarea) {
     const li = document.createElement("li");
-    li.innerHTML = `<p>${tarea.nombre}</p>`;
-    li.setAttribute("tid", tarea.tid);
+    li.innerHTML = `
+        <p>${tarea.nombre}</p>
+        <button onclick="eliminarTarea(${tarea.tid})">🗑</button>
+    `;
     tareasUl.appendChild(li);
 }
 function agregarTodasTareasLi() {
@@ -56,6 +58,13 @@ function agregarTarea() {
 
         nuevaTareaInput.value = "";
     }
+}
+
+function eliminarTarea(tid) {
+    const pos = tareas.findIndex(tarea => tid === tarea.tid);
+    tareas.splice(pos, 1);
+    tareasUl.removeChild(tareasUl.children[pos]);
+    guardarBackup();
 }
 
 function vaciar() {
