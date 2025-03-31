@@ -37,12 +37,29 @@ function guardarBackup() {
 
 function agregarTareaLi(tarea) {
     const li = document.createElement("li");
-    li.innerHTML = `
-        <button onclick="palancaTarea(${tarea.tid})">
-            ${tarea.nombre}
-        </button>
-        <button onclick="eliminarTarea(${tarea.tid})">🗑</button>
-    `;
+    const input = document.createElement("input");
+    const p = document.createElement("p");
+    const btnRemover = document.createElement("button");
+
+    input.type = "checkbox";
+    if (tarea.fechaCompletado !== null)
+        input.checked = "";
+    input.addEventListener("change", () => {
+        if (tarea.fechaCompletado === null)
+            tarea.fechaCompletado = new Date();
+        else
+            tarea.fechaCompletado = null;
+        guardarBackup();
+    });
+
+    p.innerHTML = `${tarea.nombre}`;
+    
+    btnRemover.innerText = "🗑";
+    btnRemover.onclick = () => eliminarTarea(tarea.tid);
+
+    li.appendChild(input);
+    li.appendChild(p);
+    li.appendChild(btnRemover);
     tareasUl.appendChild(li);
 }
 function agregarTodasTareasLi() {
@@ -69,16 +86,6 @@ function agregarTarea() {
         nuevaTareaInput.value = "";
     }
 }
-function palancaTarea(tid) {
-    const pos = tareas.findIndex(tarea => tid === tarea.tid);
-    
-    if (tarea[pos].fechaCompletado !== null)
-        tarea[pos].fechaCompletado = null;
-    else
-        tarea[pos].fechaCompletado = new Date();
-
-    guardarBackup();
-}
 function eliminarTarea(tid) {
     const pos = tareas.findIndex(tarea => tid === tarea.tid);
     tareas.splice(pos, 1);
@@ -90,6 +97,9 @@ function vaciar() {
     tareas = [];
     tareasUl.innerHTML = "";
     localStorage.removeItem("tareas");
+}
+
+function filtrar(modo) {
 }
 
 

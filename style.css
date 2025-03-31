@@ -28,7 +28,7 @@ button {
     padding: 5px 10px;
     cursor: pointer;
 }
-button:hover, input:focus {
+button:hover, input[type=text]:focus {
     box-shadow: 5px 5px 5px 1px rgba(0, 0, 255, 0.2);
 }
 button:active {
@@ -37,13 +37,13 @@ button:active {
 form {
     display: flex;
 }
-input {
+input[type=text] {
     flex: 1;
     margin-right: 5px;
     border: solid 1px #0000ff;
     outline: none;
 }
-div:has(> input) {
+div:has(> input[type=text]) {
     display: flex;
     flex-direction: column;
     width: 100%;
