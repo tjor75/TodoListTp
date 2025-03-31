@@ -81,7 +81,7 @@ div:has(> ul) li {
     gap: 3px;
 }
 div:has(> ul) li::before {
-    content: "[ ]";
+    content: "☐";
 }
 
 div:has(> ul) > p {
