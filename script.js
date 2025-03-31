@@ -13,7 +13,7 @@ function cargarBackup() {
             if (tarea.fechaCreacion !== null)
                 tarea.fechaCreacion = new Date(tarea.fechaCreacion);
             if (tarea.fechaCompletado !== null)
-                tarea.fechaCreacion = new Date(tarea.fechaCreacion);
+                tarea.fechaCompletado = new Date(tarea.fechaCompletado);
             return tarea;
         });
 
@@ -97,6 +97,34 @@ function vaciar() {
     tareas = [];
     tareasUl.innerHTML = "";
     localStorage.removeItem("tareas");
+}
+
+function eliminarTareasCompletadas() {
+    for (const tarea of tareas)
+        if (tarea.fechaCompletado !== null)
+            eliminarTarea(tarea.tid);
+}
+
+function mostrarTareaMasRapida() {
+    const tareasCompletadas = tareas.filter(tarea => tarea.fechaCompletado !== null);
+    let difTiempo;
+    let difTiempoMasRapida = Number.MAX_VALUE;
+    let masRapida;
+
+    if (tareasCompletadas.length !== 0) {
+        for (const tarea of tareasCompletadas) {
+            console.log(tarea);
+            difTiempo = tarea.fechaCompletado - tarea.fechaCreacion;
+            if (difTiempo < difTiempoMasRapida) {
+                difTiempoMasRapida = difTiempo;
+                masRapida = tarea;
+            }
+        }
+    
+        alert(`La tarea más rápida es ${masRapida.nombre} con ${difTiempoMasRapida / 1000}s`);
+    } else {
+        alert("No hay tareas completadas");
+    }
 }
 
 function filtrar(modo) {
