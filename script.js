@@ -43,7 +43,7 @@ function agregarTareaLi(tarea) {
 
     input.type = "checkbox";
     if (tarea.fechaCompletado !== null)
-        input.checked = "";
+        input.setAttribute("checked", "");
     input.addEventListener("change", () => {
         if (tarea.fechaCompletado === null)
             tarea.fechaCompletado = new Date();
@@ -92,17 +92,16 @@ function eliminarTarea(tid) {
     tareasUl.removeChild(tareasUl.children[pos]);
     guardarBackup();
 }
+function eliminarTareasCompletadas() {
+    for (const tarea of tareas)
+        if (tarea.fechaCompletado !== null)
+            eliminarTarea(tarea.tid);
+}
 
 function vaciar() {
     tareas = [];
     tareasUl.innerHTML = "";
     localStorage.removeItem("tareas");
-}
-
-function eliminarTareasCompletadas() {
-    for (const tarea of tareas)
-        if (tarea.fechaCompletado !== null)
-            eliminarTarea(tarea.tid);
 }
 
 function mostrarTareaMasRapida() {
