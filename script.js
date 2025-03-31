@@ -1,6 +1,10 @@
+const ATTR_THEME = "theme";
+const THEME_DARK_CLASS = "light";
+const THEME_LIGHT_CLASS = "dark";
 const nuevaTareaForm = document.getElementById("nuevaTareaForm");
 const nuevaTareaInput = document.getElementById("nuevaTareaInput");
 const tareasUl = document.getElementById("tareasUl");
+const cambiarTema = document.getElementById("cambiarTema");
 let tareas = [];
 let ultimoTid;
 
@@ -137,4 +141,14 @@ agregarTodasTareasLi();
 nuevaTareaForm.addEventListener("submit", evento => {
     evento.preventDefault();
     agregarTarea();
+});
+cambiarTema.addEventListener("click", () => {
+    const body = document.body;
+    if (body.getAttribute(ATTR_THEME) === THEME_DARK_CLASS) {
+        body.setAttribute(ATTR_THEME, THEME_LIGHT_CLASS);
+        cambiarTema.innerHTML = "&#x1F31E;";
+    } else {
+        body.setAttribute(ATTR_THEME, THEME_DARK_CLASS);
+        cambiarTema.innerHTML = "&#x1F31A;";
+    }
 });

@@ -65,7 +65,6 @@ main {
 div:has(> ul) {
     position: relative;
     flex: 1;
-    background: #fcfcfc;
 }
 div:has(> ul)::before {
     content: "↑↑↑↑↑";
@@ -74,7 +73,7 @@ div:has(> ul)::before {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    color: #7a7a7a;
+    color: #7e7e7e;
 }
 div:has(> ul) li {
     display: flex;
@@ -126,6 +125,9 @@ div:has(> ul > li)::before, div:has(> ul > li) > p {
     background: #eaeaea;
     color: #151515;
 }
+[theme=light] div:has(> ul) {
+    background: #fcfcfc;
+}
 [theme=light] #cambiarTema {
     background: #151515;
 }
@@ -134,6 +136,9 @@ div:has(> ul > li)::before, div:has(> ul > li) > p {
 [theme=dark] main, [theme=dark] input {
     background: #151515;
     color: #eaeaea;
+}
+[theme=dark] div:has(> ul) {
+    background: #272727;
 }
 [theme=dark] #cambiarTema {
     background: #eaeaea;
