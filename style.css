@@ -50,6 +50,7 @@ div:has(> input[type=text]) {
 }
 p {
     margin: 0;
+    word-break: break-all;
 }
 
 main {
