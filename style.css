@@ -77,7 +77,11 @@ div:has(> ul)::before {
 }
 div:has(> ul) li {
     display: flex;
+    align-items: center;
     gap: 3px;
+}
+:checked + p {
+    text-decoration: line-through;
 }
 div:has(> ul) li :first-child {
     background: none;
@@ -86,9 +90,6 @@ div:has(> ul) li :first-child {
 }
 div:has(> ul) li :first-child:hover {
     border: none;
-}
-div:has(> ul) li :first-child:before {
-    content: "☐";
 }
 
 div:has(> ul) > p {
