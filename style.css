@@ -80,7 +80,15 @@ div:has(> ul) li {
     display: flex;
     gap: 3px;
 }
-div:has(> ul) li::before {
+div:has(> ul) li :first-child {
+    background: none;
+    color: black;
+    padding: 0;
+}
+div:has(> ul) li :first-child:hover {
+    border: none;
+}
+div:has(> ul) li :first-child:before {
     content: "☐";
 }
 

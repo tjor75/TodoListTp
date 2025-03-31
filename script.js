@@ -9,6 +9,14 @@ function cargarBackup() {
     let doNew = false;
     try {
         tareas = JSON.parse(localStorage.getItem("tareas"));
+        tareas = tareas.map(tarea => {
+            if (tarea.fechaCreacion !== null)
+                tarea.fechaCreacion = new Date(tarea.fechaCreacion);
+            if (tarea.fechaCompletado !== null)
+                tarea.fechaCreacion = new Date(tarea.fechaCreacion);
+            return tarea;
+        });
+
         ultimoTid = parseInt(localStorage.getItem("ultimoTid"));
         doNew = tareas === null || isNaN(ultimoTid);
     } catch (e) {
@@ -30,7 +38,9 @@ function guardarBackup() {
 function agregarTareaLi(tarea) {
     const li = document.createElement("li");
     li.innerHTML = `
-        <p>${tarea.nombre}</p>
+        <button onclick="palancaTarea(${tarea.tid})">
+            ${tarea.nombre}
+        </button>
         <button onclick="eliminarTarea(${tarea.tid})">🗑</button>
     `;
     tareasUl.appendChild(li);
@@ -59,7 +69,16 @@ function agregarTarea() {
         nuevaTareaInput.value = "";
     }
 }
+function palancaTarea(tid) {
+    const pos = tareas.findIndex(tarea => tid === tarea.tid);
+    
+    if (tarea[pos].fechaCompletado !== null)
+        tarea[pos].fechaCompletado = null;
+    else
+        tarea[pos].fechaCompletado = new Date();
 
+    guardarBackup();
+}
 function eliminarTarea(tid) {
     const pos = tareas.findIndex(tarea => tid === tarea.tid);
     tareas.splice(pos, 1);
