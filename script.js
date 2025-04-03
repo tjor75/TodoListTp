@@ -92,14 +92,24 @@ function agregarTarea() {
 }
 function eliminarTarea(tid) {
     const pos = tareas.findIndex(tarea => tid === tarea.tid);
-    tareas.splice(pos, 1);
     tareasUl.removeChild(tareasUl.children[pos]);
+    tareas.splice(pos, 1);
     guardarBackup();
 }
 function eliminarTareasCompletadas() {
-    for (const tarea of tareas)
-        if (tarea.fechaCompletado !== null)
-            eliminarTarea(tarea.tid);
+    /*
+    * Modificar el array mientras se eliminan elementos podría generar problemas,
+    * porque no se reindexa.
+    * El "foreach" llama así a recorre con infromación desactualizada.
+    * for (const tarea of tareas) {
+    *     console.log(tareas);
+    *     if (tarea.fechaCompletado !== null)
+    *         eliminarTarea(tarea.tid);
+    * }
+    */
+    for (let i = tareas.length - 1; i >= 0; i--)
+        if (tareas[i].fechaCompletado !== null)
+            eliminarTarea(tareas[i].tid);
 }
 
 function vaciar() {
