@@ -139,10 +139,6 @@ function mostrarTareaMasRapida() {
     }
 }
 
-function filtrar(modo) {
-}
-
-
 cargarBackup();
 agregarTodasTareasLi();
 
