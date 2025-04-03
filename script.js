@@ -156,10 +156,10 @@ cambiarTemaBtn.addEventListener("click", () => {
     const body = document.body;
     if (body.getAttribute(ATTR_THEME) === THEME_DARK_CLASS) {
         body.setAttribute(ATTR_THEME, THEME_LIGHT_CLASS);
-        cambiarTema.innerHTML = "&#x1F31E;";
+        cambiarTemaBtn.innerHTML = "&#x1F31E;";
     } else {
         body.setAttribute(ATTR_THEME, THEME_DARK_CLASS);
-        cambiarTema.innerHTML = "&#x1F31A;";
+        cambiarTemaBtn.innerHTML = "&#x1F31A;";
     }
 });
 nuevaTareaForm.addEventListener("submit", evento => {
