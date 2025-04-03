@@ -1,10 +1,14 @@
 const ATTR_THEME = "theme";
 const THEME_DARK_CLASS = "light";
 const THEME_LIGHT_CLASS = "dark";
+const FILTRO_COMPLETADO = "completado";
+const FILTRO_PENDIENTES = "pendientes";
+const FILTRO_TODOS = "todos";
+const filtrarSelect = document.getElementById("filtrarSelect");
+const cambiarTemaBtn = document.getElementById("cambiarTemaBtn");
 const nuevaTareaForm = document.getElementById("nuevaTareaForm");
 const nuevaTareaInput = document.getElementById("nuevaTareaInput");
 const tareasUl = document.getElementById("tareasUl");
-const cambiarTema = document.getElementById("cambiarTema");
 let tareas = [];
 let ultimoTid;
 
@@ -84,7 +88,8 @@ function agregarTarea() {
         };
 
         tareas.push(tarea);
-        agregarTareaLi(tarea);
+        if (filtrarSelect.value !== FILTRO_COMPLETADO)
+            agregarTareaLi(tarea);
         guardarBackup();
 
         nuevaTareaInput.value = "";
@@ -110,12 +115,6 @@ function eliminarTareasCompletadas() {
     for (let i = tareas.length - 1; i >= 0; i--)
         if (tareas[i].fechaCompletado !== null)
             eliminarTarea(tareas[i].tid);
-}
-
-function vaciar() {
-    tareas = [];
-    tareasUl.innerHTML = "";
-    localStorage.removeItem("tareas");
 }
 
 function mostrarTareaMasRapida() {
@@ -148,11 +147,16 @@ cargarBackup();
 agregarTodasTareasLi();
 
 
-nuevaTareaForm.addEventListener("submit", evento => {
-    evento.preventDefault();
-    agregarTarea();
+filtrarSelect.addEventListener("change", () => {
+    tareasUl.innerHTML = "";
+    for (const tarea of tareas)
+        if (
+            filtrarSelect.value === FILTRO_COMPLETADO && tarea.fechaCompletado !== null ||
+            filtrarSelect.value === FILTRO_PENDIENTES && tarea.fechaCompletado === null ||
+            filtrarSelect.value === FILTRO_TODOS)
+            agregarTareaLi(tarea);
 });
-cambiarTema.addEventListener("click", () => {
+cambiarTemaBtn.addEventListener("click", () => {
     const body = document.body;
     if (body.getAttribute(ATTR_THEME) === THEME_DARK_CLASS) {
         body.setAttribute(ATTR_THEME, THEME_LIGHT_CLASS);
@@ -161,4 +165,8 @@ cambiarTema.addEventListener("click", () => {
         body.setAttribute(ATTR_THEME, THEME_DARK_CLASS);
         cambiarTema.innerHTML = "&#x1F31A;";
     }
+});
+nuevaTareaForm.addEventListener("submit", evento => {
+    evento.preventDefault();
+    agregarTarea();
 });

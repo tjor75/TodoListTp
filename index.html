@@ -9,9 +9,14 @@
 <body theme="light">
     <main>
         <div>
-            <button onclick="eliminarTareasCompletadas();">Eliminar completados&#9762;&#65039;</button>
-            <button onclick="mostrarTareaMasRapida();">Tarea m&aacute;s r&aacute;pida&#x1F3C3;</button>
-            <button id="cambiarTema">&#x1F31A;</button>
+            <button onclick="eliminarTareasCompletadas();">&#9762;&#65039;Eliminar completados</button>
+            <button onclick="mostrarTareaMasRapida();">&#x1F3C3;Tarea m&aacute;s r&aacute;pida</button>
+            <select id="filtrarSelect">
+                <option value="todos" selected>Todos</option>
+                <option value="completado">☑ Completado</option>
+                <option value="pendientes">☐ Pendientes</option>
+            </select>
+            <button id="cambiarTemaBtn">&#x1F31A;</button>
         </div>
 
         <form id="nuevaTareaForm">

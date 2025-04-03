@@ -6,7 +6,7 @@
 * {
     border-radius: 5px;
 }
-body, button, input {
+body, button, select, input {
     font-family: "Roboto Mono", sans-serif;
     font-weight: bold;
 }
@@ -18,10 +18,10 @@ body {
     background-size: cover;
     background-position: center;
 }
-button, input, ul {
+button, select, input, ul {
     padding: 5px 10px;
 }
-button {
+button, select {
     background: #0000ff;
     color: #fff;
     border: none;
@@ -109,7 +109,7 @@ div:has(> ul > li)::before, div:has(> ul > li) > p {
     gap: 5px;
 }
 
-#cambiarTema {
+#cambiarTemaBtn {
     font-size: 16px;
     float: right;
     padding: 5px;
@@ -130,7 +130,7 @@ div:has(> ul > li)::before, div:has(> ul > li) > p {
 [theme=light] div:has(> ul) {
     background: #fcfcfc;
 }
-[theme=light] #cambiarTema {
+[theme=light] #cambiarTemaBtn {
     background: #151515;
 }
 
@@ -142,7 +142,7 @@ div:has(> ul > li)::before, div:has(> ul > li) > p {
 [theme=dark] div:has(> ul) {
     background: #272727;
 }
-[theme=dark] #cambiarTema {
+[theme=dark] #cambiarTemaBtn {
     background: #eaeaea;
 }
 
