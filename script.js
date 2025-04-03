@@ -14,7 +14,7 @@ let ultimoTid;
 
 
 function cargarBackup() {
-    let doNew = false;
+    let hacerNuevo = false;
     try {
         tareas = JSON.parse(localStorage.getItem("tareas"));
         tareas = tareas.map(tarea => {
@@ -26,12 +26,12 @@ function cargarBackup() {
         });
 
         ultimoTid = parseInt(localStorage.getItem("ultimoTid"));
-        doNew = tareas === null || isNaN(ultimoTid);
+        hacerNuevo = tareas === null || isNaN(ultimoTid);
     } catch (e) {
         console.log("No se puede cargar un backup. Creando una nueva lista.");
-        doNew = true;
+        hacerNuevo = true;
     } finally {
-        if (doNew) {
+        if (hacerNuevo) {
             tareas = [];
             ultimoTid = 0;
         }

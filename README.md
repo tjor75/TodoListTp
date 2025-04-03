@@ -1,4 +1,4 @@
-# [TP 1] Formulario con validaciones
+# [TP 2] To-do List
 
 por Uriel Engelberg y Lucas Tjor
 
